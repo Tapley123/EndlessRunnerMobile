@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header ("Class Refs")]
+    [Header ("Refs")]
     private Animator animator;
     private CharacterController controller;
+    private GameObject mainCamera;
 
     [Header("Controls")]
     //jump buttons
@@ -35,12 +36,20 @@ public class PlayerController : MonoBehaviour
     {
         animator = this.GetComponentInChildren<Animator>();
         controller = this.GetComponent<CharacterController>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         currentSpeed = defaultRunSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //prevents all player movement untill the start animation has finished
+        if(Time.time < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
+        {
+            controller.Move(Vector3.forward * currentSpeed * Time.deltaTime);
+            return;
+        }
+
         Animation();
         PlayerMovement();
     }
@@ -59,14 +68,16 @@ public class PlayerController : MonoBehaviour
     {
         moveVector = Vector3.zero;
 
+        //if the player is not on the ground it applys the gravity force to the player
         if(controller.isGrounded)
             verticalVelocity = -0.5f;
         else
             verticalVelocity -= gravity * Time.deltaTime;
 
-        moveVector.x = Input.GetAxisRaw("Horizontal") * sidwaysSpeed;
-        moveVector.y = verticalVelocity;
-        moveVector.z = currentSpeed;
+
+        moveVector.x = Input.GetAxisRaw("Horizontal") * sidwaysSpeed; //move left/right
+        moveVector.y = verticalVelocity; 
+        moveVector.z = currentSpeed; // move forward
 
         controller.Move(moveVector * Time.deltaTime * defaultRunSpeed);
     }
