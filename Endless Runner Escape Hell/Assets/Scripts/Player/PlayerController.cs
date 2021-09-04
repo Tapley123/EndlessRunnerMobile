@@ -19,6 +19,15 @@ public class PlayerController : MonoBehaviour
 
     [Header("Tweaking Variables")]
     [Range (1, 10)][SerializeField] private float defaultRunSpeed = 3f;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float sidwaysSpeed = 1.5f;
+    [SerializeField] private float gravity = 12f;
+
+
+
+    private float verticalVelocity = 0f;
+    private Vector3 moveVector;
+
 
     
 
@@ -26,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = this.GetComponentInChildren<Animator>();
         controller = this.GetComponent<CharacterController>();
+        currentSpeed = defaultRunSpeed;
     }
 
     // Update is called once per frame
@@ -47,6 +57,17 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
-        controller.Move(Vector3.forward * Time.deltaTime * defaultRunSpeed);
+        moveVector = Vector3.zero;
+
+        if(controller.isGrounded)
+            verticalVelocity = -0.5f;
+        else
+            verticalVelocity -= gravity * Time.deltaTime;
+
+        moveVector.x = Input.GetAxisRaw("Horizontal") * sidwaysSpeed;
+        moveVector.y = verticalVelocity;
+        moveVector.z = currentSpeed;
+
+        controller.Move(moveVector * Time.deltaTime * defaultRunSpeed);
     }
 }
