@@ -4,6 +4,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region singleton
+    private static PlayerController _instance;
+
+    public static PlayerController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<PlayerController>();
+            }
+
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+    #endregion
+
     [Header ("Refs")]
     private Animator animator;
     private CharacterController controller;
@@ -20,8 +42,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Tweaking Variables")]
     [Range (1, 10)][SerializeField] private float defaultRunSpeed = 3f;
-    [SerializeField] private float currentSpeed;
-    [SerializeField] private float sidwaysSpeed = 1.5f;
+    public float currentSpeed;
+    public float sidwaysSpeed = 1.5f;
     [SerializeField] private float gravity = 12f;
 
 
