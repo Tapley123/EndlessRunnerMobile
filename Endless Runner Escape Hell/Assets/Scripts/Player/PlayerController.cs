@@ -103,4 +103,9 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveVector * Time.deltaTime * defaultRunSpeed);
     }
+
+    public void SetSpeed(float modifier)
+    {
+        currentSpeed = defaultRunSpeed + modifier;
+    }
 }
