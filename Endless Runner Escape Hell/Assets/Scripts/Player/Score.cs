@@ -14,8 +14,6 @@ public class Score : MonoBehaviour
     private int scoreToNextLevel = 10;
 
 
-
-
     void Start()
     {
         if (scoreText == null)
@@ -25,6 +23,9 @@ public class Score : MonoBehaviour
     
     void Update()
     {
+        if (PlayerController.Instance.isDead)
+            return;
+
         if (score >= scoreToNextLevel)
             LevelUP();
 

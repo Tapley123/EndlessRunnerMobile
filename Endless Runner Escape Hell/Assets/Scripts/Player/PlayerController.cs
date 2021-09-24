@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private float verticalVelocity = 0f;
     private Vector3 moveVector;
-    private bool isDead = false;
+    public bool isDead = false;
 
     [Header("Rolling")]
     [SerializeField] private bool rolling = false;
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private float halfColliderPivotHeight;
 
     [Header("Jumping")]
+    public float jumpHeight = 2f;
     [SerializeField] private bool jumping = false;
 
 
@@ -88,7 +89,8 @@ public class PlayerController : MonoBehaviour
         }
 
         Animation();
-        PlayerMovement();
+        //PlayerMovement();
+        PlayerMovement2();
         RollingBehaviors();
         JumpingBehaviors();
     }
@@ -114,12 +116,34 @@ public class PlayerController : MonoBehaviour
         else
             verticalVelocity -= gravity * Time.deltaTime;
 
-
         moveVector.x = Input.GetAxisRaw("Horizontal") * sidwaysSpeed; //move left/right
         moveVector.y = verticalVelocity;
         moveVector.z = currentSpeed; // move forward
 
+
+        // Changes the height position of the player..
+        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
+        {
+            verticalVelocity = jumpHeight;
+        }
+
         controller.Move(moveVector * Time.deltaTime * defaultRunSpeed);
+    }
+
+    void PlayerMovement2()
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        Vector3 direction = new Vector3(horizontalInput * sidwaysSpeed, 0, currentSpeed);
+
+        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
+            verticalVelocity = jumpHeight;
+
+        verticalVelocity -= gravity * Time.deltaTime;
+
+        direction.y = verticalVelocity;
+
+        controller.Move(direction * defaultRunSpeed * Time.deltaTime);
     }
     #endregion
 
@@ -169,6 +193,9 @@ public class PlayerController : MonoBehaviour
     {
         // Check if you you hit something in front of you
         if (hit.point.z > transform.position.z + controller.radius && hit.gameObject.CompareTag("Obstacle"))
+            Death();
+
+        if (hit.point.z > transform.position.z + controller.radius && hit.gameObject.CompareTag("Jump Obstacle") && !jumping)
             Death();
     }
     #endregion
