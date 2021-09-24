@@ -76,33 +76,51 @@ public class PlayerController : MonoBehaviour
     void Animation()
     {
         //if the jump button is pressed
-        if(Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
+        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
             animator.SetTrigger("Jump");
 
         if (Input.GetKeyDown(rollButton1) || Input.GetKeyDown(rollButton2))
             animator.SetTrigger("Roll");
     }
 
+    #region Physics
     void PlayerMovement()
     {
         moveVector = Vector3.zero;
 
         //if the player is not on the ground it applys the gravity force to the player
-        if(controller.isGrounded)
+        if (controller.isGrounded)
             verticalVelocity = -0.5f;
         else
             verticalVelocity -= gravity * Time.deltaTime;
 
 
         moveVector.x = Input.GetAxisRaw("Horizontal") * sidwaysSpeed; //move left/right
-        moveVector.y = verticalVelocity; 
+        moveVector.y = verticalVelocity;
         moveVector.z = currentSpeed; // move forward
 
         controller.Move(moveVector * Time.deltaTime * defaultRunSpeed);
     }
+    #endregion
 
+    #region Behaviors
     public void SetSpeed(float modifier)
     {
         currentSpeed = defaultRunSpeed + modifier;
     }
+
+    void Death()
+    {
+        Debug.Log("Dead");    
+    }
+    #endregion
+
+    #region Collisions
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Check if you you hit something in front of you
+        if (hit.point.z > transform.position.z + controller.radius)
+            Death();
+    }
+    #endregion
 }
