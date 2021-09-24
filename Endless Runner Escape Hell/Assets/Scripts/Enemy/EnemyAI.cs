@@ -70,6 +70,6 @@ public class EnemyAI : MonoBehaviour
         else
             moveVector = new Vector3(sidwaysSpeed, verticalVelocity, speed);
 
-        controller.Move(moveVector * Time.deltaTime * speed);
+        controller.Move(moveVector * PlayerController.Instance.defaultRunSpeed * Time.deltaTime);
     }
 }

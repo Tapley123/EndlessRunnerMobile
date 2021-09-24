@@ -661,7 +661,7 @@ MonoBehaviour:
   - {fileID: 1581404589160987708, guid: 2de9942ddd80e474388fdaf78dc446c9, type: 3}
   - {fileID: 812885369370762957, guid: c98b7855e27e98842a623837fae2d6a3, type: 3}
   tileLength: 16.653
-  safeZone: 20
+  safeZone: 25
   amountOfBlankTilesAtStart: 3
   amountOfTilesOnScreen: 8
 --- !u!1 &963194225

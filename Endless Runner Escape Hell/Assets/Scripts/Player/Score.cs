@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
     //the higher the difficulty level you are on the more points you get per second
     private int difficultyLevel = 1;
     [SerializeField] private int maxDifficultyLevel = 10;
-    private int scoreToNextLevel;
+    private int scoreToNextLevel = 10;
 
 
 
@@ -28,16 +28,19 @@ public class Score : MonoBehaviour
         if (score >= scoreToNextLevel)
             LevelUP();
 
-        score += Time.deltaTime;
+        score += Time.deltaTime * difficultyLevel; //Increases score over time // get more score per second the higher the difficulty level
         scoreText.text = ((int)score).ToString();
     }
 
-    void LevelUP()
+    public void LevelUP()
     {
         if (difficultyLevel == maxDifficultyLevel)
             return;
 
         scoreToNextLevel *= 2; // makes the next difficulty level twice as long to get to than the previous level
         difficultyLevel++; // increses the difficulty level
+
+        GetComponent<PlayerController>().SetSpeed(difficultyLevel); //increases the players movement speed when the difficulty level is increased
+        Debug.Log("Difficult Level = " + difficultyLevel);
     }
 }

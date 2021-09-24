@@ -41,18 +41,15 @@ public class PlayerController : MonoBehaviour
     private KeyCode rollButton2 = KeyCode.DownArrow;
 
     [Header("Tweaking Variables")]
-    [Range (1, 10)][SerializeField] private float defaultRunSpeed = 3f;
+    [Range (1, 10)] public float defaultRunSpeed = 3f;
     public float currentSpeed;
     public float sidwaysSpeed = 1.5f;
     [SerializeField] private float gravity = 12f;
 
 
-
     private float verticalVelocity = 0f;
     private Vector3 moveVector;
 
-
-    
 
     void Start()
     {
