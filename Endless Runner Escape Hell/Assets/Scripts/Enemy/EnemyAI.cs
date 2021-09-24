@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
 
     private float verticalVelocity = 0f;
     private Vector3 moveVector;
+    private bool caughtPlayer = false;
 
 
     void Start()
@@ -32,6 +33,9 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (caughtPlayer)
+            return;
+
         //prevents all player movement untill the start animation has finished
         if (Time.time < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
         {
@@ -44,7 +48,7 @@ public class EnemyAI : MonoBehaviour
         EnemyMovement();
     }
 
-
+    #region Physics
     void EnemyMovement()
     {
         playerSpeed = PlayerController.Instance.currentSpeed;
@@ -72,4 +76,22 @@ public class EnemyAI : MonoBehaviour
 
         controller.Move(moveVector * PlayerController.Instance.defaultRunSpeed * Time.deltaTime);
     }
+    #endregion
+
+    #region Behaviors
+    //called when the enemy touches the player
+    void CaughtPlayer()
+    {
+        //Debug.Log("Caught The Player");
+        caughtPlayer = true;
+    }
+    #endregion
+
+    #region Collisions
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.CompareTag("Player"))
+            CaughtPlayer();
+    }
+    #endregion
 }

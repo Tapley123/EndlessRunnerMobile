@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -49,6 +47,17 @@ public class PlayerController : MonoBehaviour
 
     private float verticalVelocity = 0f;
     private Vector3 moveVector;
+    private bool isDead = false;
+
+    [Header("Rolling")]
+    [SerializeField] private bool rolling = false;
+    private float startColliderHeight;
+    private float halfColliderHeight;
+    private float startColliderPivotHeight;
+    private float halfColliderPivotHeight;
+
+    [Header("Jumping")]
+    [SerializeField] private bool jumping = false;
 
 
     void Start()
@@ -57,11 +66,20 @@ public class PlayerController : MonoBehaviour
         controller = this.GetComponent<CharacterController>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         currentSpeed = defaultRunSpeed;
+
+        //rolling
+        startColliderHeight = controller.height;
+        halfColliderHeight = controller.height / 2;
+        startColliderPivotHeight = controller.center.y;
+        halfColliderPivotHeight = controller.center.y / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+            return;
+
         //prevents all player movement untill the start animation has finished
         if(Time.time < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
         {
@@ -71,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
         Animation();
         PlayerMovement();
+        RollingBehaviors();
+        JumpingBehaviors();
     }
 
     void Animation()
@@ -111,7 +131,36 @@ public class PlayerController : MonoBehaviour
 
     void Death()
     {
-        Debug.Log("Dead");    
+        //Debug.Log("Dead");
+        isDead = true;
+    }
+
+    void RollingBehaviors()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Roll"))
+            rolling = true;
+        else
+            rolling = false;
+
+
+        if (rolling)
+        {
+            controller.height = halfColliderHeight;
+            controller.center = new Vector3(controller.center.x, halfColliderPivotHeight, controller.center.z);
+        }
+        else
+        {
+            controller.height = startColliderHeight;
+            controller.center = new Vector3(controller.center.x, startColliderPivotHeight, controller.center.z);
+        }
+    }
+
+    void JumpingBehaviors()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+            jumping = true;
+        else
+            jumping = false;
     }
     #endregion
 
@@ -119,7 +168,7 @@ public class PlayerController : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // Check if you you hit something in front of you
-        if (hit.point.z > transform.position.z + controller.radius)
+        if (hit.point.z > transform.position.z + controller.radius && hit.gameObject.CompareTag("Obstacle"))
             Death();
     }
     #endregion

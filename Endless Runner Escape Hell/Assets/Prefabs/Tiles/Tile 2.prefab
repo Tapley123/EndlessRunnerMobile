@@ -1941,7 +1941,7 @@ GameObject:
   - component: {fileID: 3924462838446591186}
   m_Layer: 0
   m_Name: Tall Rock (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
