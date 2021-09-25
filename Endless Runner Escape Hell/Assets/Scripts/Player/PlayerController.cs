@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private float verticalVelocity = 0f;
     private Vector3 moveVector;
     public bool isDead = false;
+    private float startTime;
 
     [Header("Rolling")]
     [SerializeField] private bool rolling = false;
@@ -73,6 +74,8 @@ public class PlayerController : MonoBehaviour
         halfColliderHeight = controller.height / 2; //half the size of the collider at the start
         startColliderPivotHeight = controller.center.y;
         halfColliderPivotHeight = controller.center.y / 2; //half the y offset of the collider at the start
+
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -82,7 +85,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         //prevents all player movement untill the start animation has finished
-        if(Time.time < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
+        if(Time.time - startTime < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
         {
             controller.Move(Vector3.forward * currentSpeed * Time.deltaTime);
             return;

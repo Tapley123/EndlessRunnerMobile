@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     //general 
     private float sidwaysSpeed = 1.5f;
     private float gravity = 12f;
-    private float speed = 3f;
+    [SerializeField] private float speed = 3f;
     private float playerSpeed;
     private float distanceFromPlayer;
 
@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     private float verticalVelocity = 0f;
     private Vector3 moveVector;
     private bool caughtPlayer = false;
+    private float startTime;
 
 
     void Start()
@@ -29,6 +30,8 @@ public class EnemyAI : MonoBehaviour
         animator = this.GetComponentInChildren<Animator>();
         controller = this.GetComponent<CharacterController>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+        startTime = Time.time;
     }
 
     void Update()
@@ -37,7 +40,7 @@ public class EnemyAI : MonoBehaviour
             return;
 
         //prevents all player movement untill the start animation has finished
-        if (Time.time < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
+        if (Time.time - startTime < mainCamera.GetComponent<CameraFollow>().AnimationDuration)
         {
             controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;
