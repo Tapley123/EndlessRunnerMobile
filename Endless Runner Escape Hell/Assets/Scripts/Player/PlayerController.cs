@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     #endregion
 
@@ -70,9 +70,9 @@ public class PlayerController : MonoBehaviour
 
         //rolling
         startColliderHeight = controller.height;
-        halfColliderHeight = controller.height / 2;
+        halfColliderHeight = controller.height / 2; //half the size of the collider at the start
         startColliderPivotHeight = controller.center.y;
-        halfColliderPivotHeight = controller.center.y / 2;
+        halfColliderPivotHeight = controller.center.y / 2; //half the y offset of the collider at the start
     }
 
     // Update is called once per frame
@@ -89,8 +89,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Animation();
-        //PlayerMovement();
-        PlayerMovement2();
+        PlayerMovement();
         RollingBehaviors();
         JumpingBehaviors();
     }
@@ -107,30 +106,6 @@ public class PlayerController : MonoBehaviour
 
     #region Physics
     void PlayerMovement()
-    {
-        moveVector = Vector3.zero;
-
-        //if the player is not on the ground it applys the gravity force to the player
-        if (controller.isGrounded)
-            verticalVelocity = -0.5f;
-        else
-            verticalVelocity -= gravity * Time.deltaTime;
-
-        moveVector.x = Input.GetAxisRaw("Horizontal") * sidwaysSpeed; //move left/right
-        moveVector.y = verticalVelocity;
-        moveVector.z = currentSpeed; // move forward
-
-
-        // Changes the height position of the player..
-        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
-        {
-            verticalVelocity = jumpHeight;
-        }
-
-        controller.Move(moveVector * Time.deltaTime * defaultRunSpeed);
-    }
-
-    void PlayerMovement2()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
@@ -161,6 +136,8 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Dead");
         isDead = true;
+
+        DeathMenu.Instance.ToggleEndMenu(this.GetComponent<Score>().score);
     }
 
     void RollingBehaviors()
@@ -171,6 +148,7 @@ public class PlayerController : MonoBehaviour
             rolling = false;
 
 
+        //makes the hit collider shorter when the player is rolling 
         if (rolling)
         {
             controller.height = halfColliderHeight;
@@ -185,6 +163,7 @@ public class PlayerController : MonoBehaviour
 
     void JumpingBehaviors()
     {
+        //checks if the player is jumping
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
             jumping = true;
         else

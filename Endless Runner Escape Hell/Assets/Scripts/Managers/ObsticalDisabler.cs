@@ -19,6 +19,7 @@ public class ObsticalDisabler : MonoBehaviour
         DisableObstacals();
     }
 
+    //disables all the colliders on all the obstacles after the player has run passed them
     void DisableObstacals()
     {
         if (obstacals != null)

@@ -5,8 +5,31 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    private float score;
+    #region singleton
+    private static Score _instance;
+
+    public static Score Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<Score>();
+            }
+
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+    }
+    #endregion
+
+    public float score;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private DeathMenu deathMenu;
 
     //the higher the difficulty level you are on the more points you get per second
     private int difficultyLevel = 1;
@@ -18,13 +41,17 @@ public class Score : MonoBehaviour
     {
         if (scoreText == null)
             Debug.LogError("Assign the score text to the score script on the player");
+
+        deathMenu = GameObject.FindObjectOfType<DeathMenu>();
     }
 
     
     void Update()
     {
+        //if the player dies
         if (PlayerController.Instance.isDead)
             return;
+            
 
         if (score >= scoreToNextLevel)
             LevelUP();
