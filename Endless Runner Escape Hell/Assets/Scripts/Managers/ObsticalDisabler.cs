@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//used for disabling the obsticals when the player goes passed them so the enemy isnt stopped by them
 public class ObsticalDisabler : MonoBehaviour
 {
     public Transform player;
     public GameObject[] obstacals;
-    public GameObject[] JumpingObstacals;
 
     private void Start()
     {
@@ -16,28 +16,19 @@ public class ObsticalDisabler : MonoBehaviour
     void Update()
     {
         obstacals = GameObject.FindGameObjectsWithTag("Obstacle");
-        JumpingObstacals = GameObject.FindGameObjectsWithTag("Jump Obstacle");
+        DisableObstacals();
+    }
 
-        if(obstacals != null)
+    void DisableObstacals()
+    {
+        if (obstacals != null)
         {
             for (int i = 0; i < obstacals.Length; i++)
             {
-                if(player.position.z > obstacals[i].transform.position.z)
+                if (player.position.z > obstacals[i].transform.position.z)
                 {
                     obstacals[i].GetComponent<Collider>().enabled = false;
                     Debug.Log("you ran passed " + obstacals[i].name);
-                }
-            }
-        }
-
-        if (JumpingObstacals != null)
-        {
-            for (int i = 0; i < JumpingObstacals.Length; i++)
-            {
-                if (player.position.z > JumpingObstacals[i].transform.position.z)
-                {
-                    JumpingObstacals[i].GetComponent<Collider>().enabled = false;
-                    Debug.Log("you ran passed " + JumpingObstacals[i].name);
                 }
             }
         }
