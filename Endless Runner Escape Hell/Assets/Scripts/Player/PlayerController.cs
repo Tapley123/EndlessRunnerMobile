@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Dead");
         isDead = true;
 
-        DeathMenu.Instance.ToggleEndMenu(this.GetComponent<Score>().score);
+        this.GetComponent<Score>().OnDeath();
     }
 
     void RollingBehaviors()

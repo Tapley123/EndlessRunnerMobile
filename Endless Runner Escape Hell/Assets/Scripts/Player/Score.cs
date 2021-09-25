@@ -71,4 +71,13 @@ public class Score : MonoBehaviour
         GetComponent<PlayerController>().SetSpeed(difficultyLevel); //increases the players movement speed when the difficulty level is increased
         Debug.Log("Difficult Level = " + difficultyLevel);
     }
+
+    public void OnDeath()
+    {
+        //if the score is higher than the previos highscore then make it the new highscore
+        if (PlayerPrefs.GetFloat("Highscore") < score)
+            PlayerPrefs.SetFloat("Highscore", score);
+
+        DeathMenu.Instance.ToggleEndMenu(score); //sends the score reached to the death menu
+    }
 }
