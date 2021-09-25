@@ -136,8 +136,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput * sidwaysSpeed, 0, currentSpeed);
 
-        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
-            verticalVelocity = jumpHeight;
+        if(controller.isGrounded)
+        {
+            if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
+                verticalVelocity = jumpHeight;
+        }
+        
 
         verticalVelocity -= gravity * Time.deltaTime;
 
