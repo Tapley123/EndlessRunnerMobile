@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.05
@@ -816,9 +816,9 @@ MonoBehaviour:
   - {fileID: 6501898824647464861, guid: 9a07402d1676c42438ac00729264dde9, type: 3}
   - {fileID: 2489660788744351430, guid: dd2d9bc291f41084abb3d2a5efeb6f9e, type: 3}
   tileLength: 16.653
-  safeZone: 25
+  safeZone: 15
   amountOfBlankTilesAtStart: 3
-  amountOfTilesOnScreen: 8
+  amountOfTilesOnScreen: 5
 --- !u!1 &892155479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,14 +1239,14 @@ RectTransform:
   m_GameObject: {fileID: 1353586303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.9786, y: 3.9786, z: 3.9786}
+  m_LocalScale: {x: 2.1731908, y: 2.1731908, z: 2.1731908}
   m_Children: []
   m_Father: {fileID: 434761316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -8.4001465}
+  m_AnchoredPosition: {x: 0, y: -47}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1353586305
