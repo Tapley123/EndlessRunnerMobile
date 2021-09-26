@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     [Range (1, 10)] public float defaultRunSpeed = 3f;
     public float currentSpeed;
     public float sidwaysSpeed = 1.5f;
+    public float SidwaysBoost = 5f;
     [SerializeField] private float gravity = 12f;
 
 
@@ -111,6 +112,17 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal") + Input.acceleration.x; //horzontal movement is controlled by both tilting a phone or using keyboard controls
+
+        if(SwipeManager.swipeLeft)
+        {
+            horizontalInput = SidwaysBoost * -1;
+        }
+        if(SwipeManager.swipeRight)
+        {
+            horizontalInput = SidwaysBoost;
+        }
+
+        //Debug.Log("Horizontal Input = " + horizontalInput);
 
         Vector3 direction = new Vector3(horizontalInput * sidwaysSpeed, 0, currentSpeed);
 

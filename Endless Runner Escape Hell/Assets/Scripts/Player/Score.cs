@@ -69,7 +69,7 @@ public class Score : MonoBehaviour
         difficultyLevel++; // increses the difficulty level
 
         GetComponent<PlayerController>().SetSpeed(difficultyLevel); //increases the players movement speed when the difficulty level is increased
-        Debug.Log("Difficult Level = " + difficultyLevel);
+        //Debug.Log("Difficult Level = " + difficultyLevel);
     }
 
     public void OnDeath()

@@ -28,8 +28,11 @@ public class ObsticalDisabler : MonoBehaviour
             {
                 if (player.position.z > obstacals[i].transform.position.z)
                 {
-                    obstacals[i].GetComponent<Collider>().enabled = false;
-                    Debug.Log("you ran passed " + obstacals[i].name);
+                    if(obstacals[i].GetComponent<Collider>().enabled)
+                    {
+                        obstacals[i].GetComponent<Collider>().enabled = false;
+                        //Debug.Log("you ran passed " + obstacals[i].name);
+                    }
                 }
             }
         }
