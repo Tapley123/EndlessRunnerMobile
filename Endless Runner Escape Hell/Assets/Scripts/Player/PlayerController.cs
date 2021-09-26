@@ -100,23 +100,23 @@ public class PlayerController : MonoBehaviour
     void Animation()
     {
         //if the jump button is pressed
-        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
+        if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3) || SwipeManager.swipeUp)
             animator.SetTrigger("Jump");
 
-        if (Input.GetKeyDown(rollButton1) || Input.GetKeyDown(rollButton2))
+        if (Input.GetKeyDown(rollButton1) || Input.GetKeyDown(rollButton2) || SwipeManager.swipeDown)
             animator.SetTrigger("Roll");
     }
 
     #region Physics
     void PlayerMovement()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float horizontalInput = Input.GetAxisRaw("Horizontal") + Input.acceleration.x; //horzontal movement is controlled by both tilting a phone or using keyboard controls
 
         Vector3 direction = new Vector3(horizontalInput * sidwaysSpeed, 0, currentSpeed);
 
         if(controller.isGrounded)
         {
-            if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3))
+            if (Input.GetKeyDown(jumpButton1) || Input.GetKeyDown(jumpButton2) || Input.GetKeyDown(jumpButton3) || SwipeManager.swipeUp)
                 verticalVelocity = jumpHeight;
         }
         
