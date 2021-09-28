@@ -68,7 +68,7 @@ public class Score : MonoBehaviour
         scoreToNextLevel *= 2; // makes the next difficulty level twice as long to get to than the previous level
         difficultyLevel++; // increses the difficulty level
 
-        GetComponent<PlayerController>().SetSpeed(difficultyLevel); //increases the players movement speed when the difficulty level is increased
+        GetComponent<PlayerController>().NextSpeedLevel(difficultyLevel); //increases the players movement speed when the difficulty level is increased
         //Debug.Log("Difficult Level = " + difficultyLevel);
     }
 

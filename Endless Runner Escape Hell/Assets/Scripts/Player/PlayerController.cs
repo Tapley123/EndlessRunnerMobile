@@ -63,8 +63,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool jumping = false;
 
     [Header("Speed Increse")]
-    private float newSpeedGoal;
-    private bool increasingSpeed = false;
+    private float newSpeedGoal; //the next difficulty levels speed
+    private bool increasingSpeed = false; //only true when the player is at the next difficulty level and their speed needs to increase
+    private float speedAcceleration = 1f; //speed in which the player accelerates when they hit a new difficulty level
 
 
     void Start()
@@ -147,10 +148,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Behaviors
-    public void SetSpeed(float modifier)
+    public void NextSpeedLevel(float modifier)
     {
-        //currentSpeed = defaultRunSpeed + modifier;
-
         newSpeedGoal = defaultRunSpeed + modifier;
         increasingSpeed = true;
     }
@@ -159,7 +158,7 @@ public class PlayerController : MonoBehaviour
     {
         if (increasingSpeed && currentSpeed < newSpeedGoal)
         {
-            currentSpeed += 1 * Time.deltaTime;
+            currentSpeed += speedAcceleration * Time.deltaTime;
         }
 
         if (currentSpeed >= newSpeedGoal)
