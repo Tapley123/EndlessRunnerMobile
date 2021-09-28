@@ -62,6 +62,10 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2f;
     [SerializeField] private bool jumping = false;
 
+    [Header("Speed Increse")]
+    private float newSpeedGoal;
+    private bool increasingSpeed = false;
+
 
     void Start()
     {
@@ -96,6 +100,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         RollingBehaviors();
         JumpingBehaviors();
+        SmoothlyIncreaseSpeed();
     }
 
     void Animation()
@@ -144,7 +149,21 @@ public class PlayerController : MonoBehaviour
     #region Behaviors
     public void SetSpeed(float modifier)
     {
-        currentSpeed = defaultRunSpeed + modifier;
+        //currentSpeed = defaultRunSpeed + modifier;
+
+        newSpeedGoal = defaultRunSpeed + modifier;
+        increasingSpeed = true;
+    }
+
+    private void SmoothlyIncreaseSpeed()
+    {
+        if (increasingSpeed && currentSpeed < newSpeedGoal)
+        {
+            currentSpeed += 1 * Time.deltaTime;
+        }
+
+        if (currentSpeed >= newSpeedGoal)
+            increasingSpeed = false;
     }
 
     void Death()
