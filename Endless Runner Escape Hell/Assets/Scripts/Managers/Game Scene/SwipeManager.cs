@@ -8,6 +8,8 @@ public class SwipeManager : MonoBehaviour
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
 
+    [Range(0, 20)][SerializeField] private float offsetAmt = 0.5f;
+
     void Update()
     {
         tap = swipeDown = swipeUp = swipeLeft = swipeRight = false;

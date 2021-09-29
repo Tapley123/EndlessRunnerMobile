@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public float sidwaysSpeed = 1.5f;
     public float SidwaysBoost = 5f;
     [SerializeField] private float gravity = 12f;
+    private float startGravity;
 
 
     private float verticalVelocity = 0f;
@@ -62,6 +65,11 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2f;
     [SerializeField] private bool jumping = false;
 
+    [Header("Kick")]
+    [Range (0, 1)][SerializeField] private float kickGravityNormalised = 0.5f;
+    [Range (0, 1)][SerializeField] private float kickJumpNormalised = 0.8f;
+    [Range (0, 1)][SerializeField] private float kickDelay = 0.25f;
+
     [Header("Speed Increse")]
     private float newSpeedGoal; //the next difficulty levels speed
     private bool increasingSpeed = false; //only true when the player is at the next difficulty level and their speed needs to increase
@@ -74,6 +82,7 @@ public class PlayerController : MonoBehaviour
         controller = this.GetComponent<CharacterController>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         currentSpeed = defaultRunSpeed;
+        startGravity = gravity;
 
         //rolling
         startColliderHeight = controller.height;
@@ -101,6 +110,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         RollingBehaviors();
         JumpingBehaviors();
+        KickingBehaviors();
         SmoothlyIncreaseSpeed();
     }
 
@@ -201,6 +211,29 @@ public class PlayerController : MonoBehaviour
             jumping = true;
         else
             jumping = false;
+    }
+
+    void KickingBehaviors()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            StartCoroutine(KickCoroutine(kickDelay));
+        }
+
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Kick"))
+            gravity = gravity * kickJumpNormalised;
+        else
+            gravity = startGravity;
+    }
+    private IEnumerator KickCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Running") && controller.isGrounded)
+        {
+            animator.SetTrigger("Kick");
+            verticalVelocity = jumpHeight * kickJumpNormalised;
+        }
     }
     #endregion
 
