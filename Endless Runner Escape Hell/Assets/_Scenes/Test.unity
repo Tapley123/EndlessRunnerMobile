@@ -2293,6 +2293,11 @@ PrefabInstance:
       propertyPath: kickGravityNormalised
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6792108032378203870, guid: dc458ccd614369040b5c65e8ae95cc6b,
+        type: 3}
+      propertyPath: kickDelay
+      value: 0.27
+      objectReference: {fileID: 0}
     - target: {fileID: 8924142049824691890, guid: dc458ccd614369040b5c65e8ae95cc6b,
         type: 3}
       propertyPath: m_Name
