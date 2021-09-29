@@ -88,8 +88,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8519764441019250328}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e3994f428ba5ebe42b56a5d2d6f43597, type: 2}
+  m_Avatar: {fileID: 9000000, guid: a467cd4beeeeac948baf784465e1dbbe, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9919053d22175d141a1e84dd44dd83d9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -269,6 +269,9 @@ MonoBehaviour:
   rolling: 0
   jumpHeight: 2.75
   jumping: 0
+  kickGravityNormalised: 1
+  kickJumpNormalised: 1
+  kickDelay: 0.27
 --- !u!114 &405143940
 MonoBehaviour:
   m_ObjectHideFlags: 0
