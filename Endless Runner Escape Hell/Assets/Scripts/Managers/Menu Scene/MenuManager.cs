@@ -34,7 +34,8 @@ public class MenuManager : MonoBehaviour
     public AudioClip sound_ButtonClick;
 
     [Header("Scene Managment")]
-    [SerializeField] private int gameSceneIndex = 1;
+    [SerializeField] private int hellSceneIndex = 1;
+    [SerializeField] private int overworldSceneIndex = 2;
 
     [Header("UI")]
     public TMP_Text highScoreText;
@@ -57,16 +58,26 @@ public class MenuManager : MonoBehaviour
 
 
     #region Buttons
-    public void Button_Play()
+    public void Button_PlayHell()
     {
         PlayButtonClickSound(); //play the button click sound effect
-        StartCoroutine(Button_PlayCoroutine(sound_ButtonClick.length)); //delay so the whole button sound effect is not cut off
+        StartCoroutine(Button_PlayCoroutine(sound_ButtonClick.length, hellSceneIndex)); //delay so the whole button sound effect is not cut off
     }
-    private IEnumerator Button_PlayCoroutine(float time)
+    public void Button_PlayOverworld()
+    {
+        PlayButtonClickSound(); //play the button click sound effect
+        StartCoroutine(Button_PlayCoroutine(sound_ButtonClick.length, overworldSceneIndex)); //delay so the whole button sound effect is not cut off
+    }
+
+    private IEnumerator Button_PlayCoroutine(float time, int levelIndex)
     {
         yield return new WaitForSeconds(time);
-        SceneManager.LoadScene(gameSceneIndex); //load the game level
+        SceneManager.LoadScene(levelIndex); //load the game level
     }
+
+
+
+
 
     public void Button_Quit()
     {
