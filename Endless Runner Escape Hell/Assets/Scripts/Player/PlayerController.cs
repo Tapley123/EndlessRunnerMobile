@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     [Header ("Refs")]
-    private Animator animator;
+    [SerializeField] private Animator animator;
     private CharacterController controller;
     private GameObject mainCamera;
 
