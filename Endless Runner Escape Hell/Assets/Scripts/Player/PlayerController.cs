@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed;
     public float sidwaysSpeed = 1.5f;
     public float SidwaysBoost = 5f;
+    [SerializeField] private bool canSlideLeftAndRight = false;
     [SerializeField] private float gravity = 12f;
     private float startGravity;
 
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool jumping = false;
 
     [Header("Kick")]
+    [SerializeField] private bool useKicking = true;
     [Range (0, 1)][SerializeField] private float kickGravityNormalised = 0.5f;
     [Range (0, 1)][SerializeField] private float kickJumpNormalised = 0.8f;
     [Range (0, 1)][SerializeField] private float kickDelay = 0.25f;
@@ -110,8 +112,10 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
         RollingBehaviors();
         JumpingBehaviors();
-        KickingBehaviors();
         SmoothlyIncreaseSpeed();
+
+        if (useKicking)
+            KickingBehaviors();
     }
 
     void Animation()
@@ -129,15 +133,18 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal") + Input.acceleration.x; //horzontal movement is controlled by both tilting a phone or using keyboard controls
 
-        if(SwipeManager.swipeLeft)
+        if(canSlideLeftAndRight)
         {
-            horizontalInput = SidwaysBoost * -1;
+            if (SwipeManager.swipeLeft)
+            {
+                horizontalInput = SidwaysBoost * -1;
+            }
+            if (SwipeManager.swipeRight)
+            {
+                horizontalInput = SidwaysBoost;
+            }
         }
-        if(SwipeManager.swipeRight)
-        {
-            horizontalInput = SidwaysBoost;
-        }
-
+        
         //Debug.Log("Horizontal Input = " + horizontalInput);
 
         Vector3 direction = new Vector3(horizontalInput * sidwaysSpeed, 0, currentSpeed);

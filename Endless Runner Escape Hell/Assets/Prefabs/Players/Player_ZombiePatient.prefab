@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 6792108032378203870}
   - component: {fileID: 405143940}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_ZombiePatient
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9a11bee75169a488659c2b7cdb49b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   defaultRunSpeed: 3.56
   currentSpeed: 0
   sidwaysSpeed: 1.5
@@ -269,6 +270,7 @@ MonoBehaviour:
   rolling: 0
   jumpHeight: 2.75
   jumping: 0
+  useKicking: 0
   kickGravityNormalised: 1
   kickJumpNormalised: 1
   kickDelay: 0.27
