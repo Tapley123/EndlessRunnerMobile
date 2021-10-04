@@ -100,6 +100,17 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         ShowBanner();
     }
 
+    #region Rewards
+    void Reward_DoubleCoins()
+    {
+
+    }
+
+    void Reward_KeepRunning()
+    {
+
+    }
+    #endregion
 
 
 
@@ -125,16 +136,24 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         {
             if (placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
             {
-                //Put Rewards Here
-                Debug.Log("Reward Player Here");
+                //Debug.Log("Reward Player Here");
+                if (rewardContinueRun)
+                    Reward_KeepRunning();
+
+                if (rewardDoubleCoins)
+                    Reward_DoubleCoins();
             }
         }
         else //IOS
         {
             if (placementId == "Rewarded_iOS" && showResult == ShowResult.Finished)
             {
-                //Put Rewards Here
-                Debug.Log("Reward Player Here");
+                //Debug.Log("Reward Player Here");
+                if (rewardContinueRun)
+                    Reward_KeepRunning();
+
+                if (rewardDoubleCoins)
+                    Reward_DoubleCoins();
             }
         }
     }
