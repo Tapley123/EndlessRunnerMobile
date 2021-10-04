@@ -73,7 +73,7 @@ public class DeathMenu : MonoBehaviour
     public void Button_Menu()
     {
         AudioManager.Instance.PlayButtonSound();
-        SceneManager.LoadScene("Menu"); //go to the game menu
+        SceneManager.LoadScene(0); //go to the game menu
 
     }
     #endregion
