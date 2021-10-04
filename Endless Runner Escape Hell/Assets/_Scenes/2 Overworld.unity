@@ -883,13 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7221b3a501a8d248b0bf13268143d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 7204341020710509738, guid: 8f0c44fad0ee92d48a59af1c4adfb4b1, type: 3}
-  - {fileID: 5850630633524861994, guid: 0a5774c9c7584bc4dbc9891563685b46, type: 3}
-  - {fileID: 1222702051920490892, guid: 281765db2a3598c4897aafd08e0c0788, type: 3}
-  - {fileID: 1401323170182205643, guid: 12f001ad47e2a3045909637a26b3181b, type: 3}
-  - {fileID: 8575806179265856730, guid: 2a1a633c4f01fcd44b6e7b6069c7900c, type: 3}
-  activeTiles: []
   tileLength: 16
   safeZone: 15
   amountOfBlankTilesAtStart: 3
@@ -3292,7 +3285,7 @@ PrefabInstance:
     - target: {fileID: 7807776666440981173, guid: 5b4f4f641114be3418a8902320b48da5,
         type: 3}
       propertyPath: maxDifficultyLevel
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8922514574720800179, guid: 5b4f4f641114be3418a8902320b48da5,
         type: 3}

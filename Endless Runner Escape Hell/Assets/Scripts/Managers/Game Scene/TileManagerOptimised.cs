@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TileManagerOptimised : MonoBehaviour
 {
-    public List<GameObject> tiles;
-    [SerializeField] private List<GameObject> activeTiles;
+    private List<GameObject> activeTiles;
     private Transform playerT;
 
     private float spawnZ; //at what z position is the next tile going to spawned at
