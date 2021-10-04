@@ -37,9 +37,12 @@ public class TileManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("If " + (playerT.position.z - safeZone).ToString() + " > " + (spawnZ - amountOfTilesOnScreen * tileLength).ToString());
+
         //Everytime the player crosses a tile it spawns a new tile in front and deletes the one at the back
-        if(playerT.position.z - safeZone> (spawnZ - amountOfTilesOnScreen * tileLength))
+        if (playerT.position.z - safeZone > (spawnZ - amountOfTilesOnScreen * tileLength))
         {
+            Debug.Log("Move 1 Tile");
             SpawnTile();
             DeleteTile();
         }

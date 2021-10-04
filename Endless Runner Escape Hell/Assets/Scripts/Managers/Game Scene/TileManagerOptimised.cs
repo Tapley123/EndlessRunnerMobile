@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class TileManagerOptimised : MonoBehaviour
 {
-    private TileObjectPooler top;
-
     public List<GameObject> tiles;
-    private List<GameObject> activeTiles;
+    [SerializeField] private List<GameObject> activeTiles;
     private Transform playerT;
 
     private float spawnZ; //at what z position is the next tile going to spawned at
@@ -19,8 +17,6 @@ public class TileManagerOptimised : MonoBehaviour
 
     void Start()
     {
-        top = this.GetComponent<TileObjectPooler>();
-
         safeZone = tileLength + safeZone;
 
         activeTiles = new List<GameObject>();
@@ -33,52 +29,67 @@ public class TileManagerOptimised : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log("If " + (playerT.position.z - safeZone).ToString() + " > " + (spawnZ - amountOfTilesOnScreen * tileLength).ToString());
+
         //Everytime the player crosses a tile it spawns a new tile in front and deletes the one at the back
         if (playerT.position.z - safeZone > (spawnZ - amountOfTilesOnScreen * tileLength))
         {
+            //Debug.Log("Move 1 Tile");
             ActivateTile();
-            //DeactivateTile();
+            DeactivateTile();
         }
     }
 
     private void SpawnStartTiles()
     {
-        for (int i = 0; i < top.blankTiles.Count; i++)
+        for (int i = 0; i < amountOfTilesOnScreen; i++)
         {
-            Debug.Log(i);
-            top.blankTiles[i].SetActive(true);
-            top.blankTiles[i].transform.position = Vector3.forward * spawnZ;
+            GameObject go;
+            if (i < TileObjectPooler.current.blankTiles.Count)
+            {
+                go = TileObjectPooler.current.blankTiles[i];
+            }
+            else
+            {
+                go = TileObjectPooler.current.GetRandomTile();
+            }
+             
+            go.SetActive(true);
+            go.transform.position = Vector3.forward * spawnZ;
             spawnZ += tileLength;
+
+            activeTiles.Add(go);
         }
     }
 
     private void ActivateTile()
     {
-        GameObject go = top.GetRandomTile();
+        GameObject go = TileObjectPooler.current.GetRandomTile();
+        Transform obstacle;
+
         go.SetActive(true);
         go.transform.position = Vector3.forward * spawnZ;
         spawnZ += tileLength;
+
+        //find the obsitcal in the children of the tile if there is one
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            if (go.transform.GetChild(i).gameObject.tag == "Obstacle")
+            {
+                obstacle = go.transform.GetChild(i);
+                obstacle.GetComponent<Collider>().enabled = true;
+                //Debug.Log(go.name + "'s child " + go.transform.GetChild(i).gameObject.name + " is an obstical");
+                //Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true / false);
+            }
+        }
+        
+
+        activeTiles.Add(go);
     }
 
     private void DeactivateTile()
     {
-        Destroy(activeTiles[0]); //destroy the tile at the back
-        activeTiles.RemoveAt(0); //remove the destroyed tile from the array of active tiles
-    }
-
-    //used to pick a random tile index that isnt the last index that was used
-    private int RandomTileIndex()
-    {
-        if (tiles.Count <= 1)
-            return 0;
-
-        int randomIndex = lastTileIndex;
-        while (randomIndex == lastTileIndex)
-        {
-            randomIndex = UnityEngine.Random.Range(0, tiles.Count);
-        }
-
-        lastTileIndex = randomIndex;
-        return randomIndex;
+        activeTiles[0].SetActive(false);
+        activeTiles.RemoveAt(0);
     }
 }

@@ -34,7 +34,7 @@ public class Score : MonoBehaviour
     //the higher the difficulty level you are on the more points you get per second
     private int difficultyLevel = 1;
     [SerializeField] private int maxDifficultyLevel = 10;
-    private int scoreToNextLevel = 10;
+    [SerializeField] private int scoreToNextLevel = 10;
 
 
     void Start()

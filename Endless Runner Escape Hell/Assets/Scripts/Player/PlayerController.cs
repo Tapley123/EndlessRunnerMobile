@@ -250,6 +250,11 @@ public class PlayerController : MonoBehaviour
         // Check if you you hit something in front of you
         if (hit.point.z > transform.position.z + controller.radius && hit.gameObject.CompareTag("Obstacle"))
             Death();
+
+        if(hit.gameObject.CompareTag("Obstacle"))
+        {
+            //Debug.Log("You Have Been Hit");
+        }
     }
     #endregion
 }

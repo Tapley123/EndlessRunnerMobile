@@ -58,7 +58,7 @@ public class DeathMenu : MonoBehaviour
 
         int s = (int)score; //turning the score into an int so there is no decimals
         finalScoreText.text = s.ToString(); //displaying your final score
-        Debug.Log("Your final score was: " + s);
+        //Debug.Log("Your final score was: " + s);
     }
 
 

@@ -310,37 +310,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &2953571253305628920
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1039781461865251222}
-  m_Layer: 0
-  m_Name: Obsticals
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1039781461865251222
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953571253305628920}
-  m_LocalRotation: {x: -0, y: 0.99888885, z: -0, w: 0.0471283}
-  m_LocalPosition: {x: -0.1957, y: -0.194, z: 2.9511}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6549706233824951464}
-  m_Father: {fileID: 3961321294186783197}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 174.598, z: 0}
 --- !u!1 &3271448643766410697
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +721,7 @@ Transform:
   - {fileID: 183417121940925116}
   - {fileID: 7457871535854726803}
   - {fileID: 2203857740197368626}
-  - {fileID: 1039781461865251222}
+  - {fileID: 6549706233824951464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2021,22 +1990,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1039781461865251222}
+    m_TransformParent: {fileID: 3961321294186783197}
     m_Modifications:
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.366
+      value: 0.33240426
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19752243
+      value: 0.003522426
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.739
+      value: 1.2542845
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
@@ -2046,7 +2015,7 @@ PrefabInstance:
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.66615564
+      value: 0.71358925
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
@@ -2056,12 +2025,12 @@ PrefabInstance:
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7458127
+      value: 0.7005643
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
@@ -2081,7 +2050,7 @@ PrefabInstance:
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 8.812785
+      value: 8.812786
       objectReference: {fileID: 0}
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
@@ -2091,12 +2060,12 @@ PrefabInstance:
     - target: {fileID: 1405822914041817762, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 8.812785
+      value: 8.812786
       objectReference: {fileID: 0}
     - target: {fileID: 1441266562943540899, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
       propertyPath: m_Name
-      value: Rock4
+      value: Rock Obstical
       objectReference: {fileID: 0}
     - target: {fileID: 1441266562943540899, guid: 7bdca11741eafd7468a6e4913b86735b,
         type: 3}
