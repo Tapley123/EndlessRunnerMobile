@@ -103,7 +103,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     #region Rewards
     void Reward_DoubleCoins()
     {
-
+        DeathMenu.Instance.amountOfCoinsCollected = DeathMenu.Instance.amountOfCoinsCollected * 2;
+        DeathMenu.Instance.CoinsCollected(DeathMenu.Instance.amountOfCoinsCollected);
     }
 
     void Reward_KeepRunning()
@@ -117,7 +118,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     #region Ad default Methods
     public void OnUnityAdsReady(string placementId)
     {
-        Debug.Log("Ads are ready");
+        //Debug.Log("Ads are ready");
     }
 
     public void OnUnityAdsDidError(string message)
@@ -127,7 +128,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidStart(string placementId)
     {
-        Debug.Log("Video Started");
+        //Debug.Log("Video Started");
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)

@@ -40,11 +40,16 @@ public class MenuManager : MonoBehaviour
     [Header("UI")]
     public TMP_Text highScoreText;
     private int highScore;
+    public TMP_Text coinText;
+    private int amountOfCoins;
 
     private void Start()
     {
         highScore = (int)PlayerPrefs.GetFloat("Highscore");
         highScoreText.text = "Highscore: " + highScore.ToString();
+
+        amountOfCoins = (int)PlayerPrefs.GetFloat("Coins");
+        coinText.text = amountOfCoins.ToString();
     }
 
     #region Audio

@@ -31,6 +31,8 @@ public class DeathMenu : MonoBehaviour
 
     [SerializeField] private GameObject panel; //the panel that contains all of the ui for the menu
     [SerializeField] private TMP_Text finalScoreText;
+    [SerializeField] private TMP_Text overallCoinsCollectedText;
+    [HideInInspector] public int amountOfCoinsCollected;
 
     private bool isShown = false;
     private float transition;
@@ -61,6 +63,12 @@ public class DeathMenu : MonoBehaviour
         //Debug.Log("Your final score was: " + s);
     }
 
+    public void CoinsCollected(float amt)
+    {
+        overallCoinsCollectedText.text = amt.ToString();
+        amountOfCoinsCollected = (int)amt;
+    }
+
 
     #region Buttons
 
@@ -75,6 +83,10 @@ public class DeathMenu : MonoBehaviour
         AudioManager.Instance.PlayButtonSound();
         SceneManager.LoadScene(0); //go to the game menu
 
+        if(PlayerPrefs.GetFloat("Coins") < PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected)
+        {
+            PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected);
+        }
     }
     #endregion
 }

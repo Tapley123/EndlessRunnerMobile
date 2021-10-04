@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Score), typeof(CollectCoins))]
 public class PlayerController : MonoBehaviour
 {
     #region singleton
@@ -188,6 +189,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
 
         this.GetComponent<Score>().OnDeath();
+        this.GetComponent<CollectCoins>().OnDeath();
     }
 
     void RollingBehaviors()
