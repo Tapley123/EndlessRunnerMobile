@@ -29,7 +29,7 @@ public class Score : MonoBehaviour
 
     public float score;
     [SerializeField] private TMP_Text scoreText;
-    [SerializeField] private DeathMenu deathMenu;
+    private DeathMenu deathMenu;
 
     //the higher the difficulty level you are on the more points you get per second
     private int difficultyLevel = 1;

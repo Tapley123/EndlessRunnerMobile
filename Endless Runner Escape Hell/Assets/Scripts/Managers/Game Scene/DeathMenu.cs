@@ -76,6 +76,12 @@ public class DeathMenu : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart the game
+
+        //add to the overall coins
+        if (PlayerPrefs.GetFloat("Coins") < PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected)
+        {
+            PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected);
+        }
     }
 
     public void Button_Menu()
@@ -83,7 +89,8 @@ public class DeathMenu : MonoBehaviour
         AudioManager.Instance.PlayButtonSound();
         SceneManager.LoadScene(0); //go to the game menu
 
-        if(PlayerPrefs.GetFloat("Coins") < PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected)
+        //add to the overall coins
+        if (PlayerPrefs.GetFloat("Coins") < PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected)
         {
             PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected);
         }

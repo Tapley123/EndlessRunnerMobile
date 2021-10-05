@@ -20,15 +20,15 @@ public class PlayerController : MonoBehaviour
             return _instance;
         }
     }
-
-    void Awake()
-    {
-        //DontDestroyOnLoad(gameObject);
-    }
     #endregion
 
+    private enum enCharacter { zombie, pearl, japonese };
+    [SerializeField] private enCharacter character;
+    [SerializeField] private List<GameObject> characters;
+    private GameObject myCharacter;
+
     [Header ("Refs")]
-    [SerializeField] private Animator animator;
+    private Animator animator;
     private CharacterController controller;
     private GameObject mainCamera;
 
@@ -78,6 +78,10 @@ public class PlayerController : MonoBehaviour
     private bool increasingSpeed = false; //only true when the player is at the next difficulty level and their speed needs to increase
     private float speedAcceleration = 1f; //speed in which the player accelerates when they hit a new difficulty level
 
+    void Awake()
+    {
+        SpawnCharacter();
+    }
 
     void Start()
     {
@@ -166,6 +170,27 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Behaviors
+    private void SpawnCharacter()
+    {
+        if (character == enCharacter.zombie)
+        {
+            myCharacter = Instantiate (characters[0]);
+            myCharacter.transform.parent = this.transform;
+        }
+
+        if(character == enCharacter.pearl)
+        {
+            myCharacter = Instantiate(characters[1]);
+            myCharacter.transform.parent = this.transform;
+        }
+
+        if (character == enCharacter.japonese)
+        {
+            myCharacter = Instantiate(characters[2]);
+            myCharacter.transform.parent = this.transform;
+        }
+    }
+
     public void NextSpeedLevel(float modifier)
     {
         newSpeedGoal = defaultRunSpeed + modifier;
