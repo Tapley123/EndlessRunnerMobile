@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     private GameObject myCharacter;
 
     [Header ("Refs")]
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private GameObject mainCamera;
     private Animator animator;
-    private CharacterController controller;
-    private GameObject mainCamera;
 
     [Header("Controls")]
     //jump buttons
@@ -86,8 +86,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = this.GetComponentInChildren<Animator>();
-        controller = this.GetComponent<CharacterController>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        //controller = this.GetComponent<CharacterController>();
+        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         currentSpeed = defaultRunSpeed;
         startGravity = gravity;
 

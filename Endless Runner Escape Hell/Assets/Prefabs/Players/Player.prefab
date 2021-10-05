@@ -862,6 +862,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Button_PlayAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1348384351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,6 +2712,8 @@ MonoBehaviour:
   - {fileID: 1160916288678173673, guid: 3bf07d0889d38114a967dacfdea41fe8, type: 3}
   - {fileID: 6332414872092064617, guid: fe4af6a34c39eb64085fc9ba20b82686, type: 3}
   - {fileID: 972695614104617983, guid: ac34b8f2d3804a342a106a835add6a40, type: 3}
+  controller: {fileID: 4174115297259105946}
+  mainCamera: {fileID: 0}
   defaultRunSpeed: 3.56
   currentSpeed: 0
   sidwaysSpeed: 1.5

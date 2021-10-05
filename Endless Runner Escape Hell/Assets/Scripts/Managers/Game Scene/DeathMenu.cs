@@ -31,6 +31,7 @@ public class DeathMenu : MonoBehaviour
 
 
     [SerializeField] private GameObject panel; //the panel that contains all of the ui for the menu
+    [SerializeField] private Image panelImage; //the panel that contains all of the ui for the menu
     [SerializeField] private TMP_Text finalScoreText;
     [SerializeField] private TMP_Text overallCoinsCollectedText;
     public int amountOfCoinsCollected;
@@ -51,7 +52,7 @@ public class DeathMenu : MonoBehaviour
             return;
 
         transition += Time.deltaTime;
-        panel.GetComponent<Image>().color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, transition);
+        panelImage.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, transition);
     }
 
     public void ToggleEndMenu(float score)
@@ -80,33 +81,37 @@ public class DeathMenu : MonoBehaviour
 
 
     #region Buttons
+    public void Button_PlayAd()
+    {
+        AudioManager.Instance.PlayButtonSound();
+    }
 
     public void Button_Play()
     {
-        amountOfCoinsCollected = 0;
-
         AudioManager.Instance.PlayButtonSound();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart the game
 
         //add to the overall coins
         if (PlayerPrefs.GetFloat("Coins") < PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected)
         {
             PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected);
         }
+
+        amountOfCoinsCollected = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart the game
     }
 
     public void Button_Menu()
     {
-        amountOfCoinsCollected = 0;
-
         AudioManager.Instance.PlayButtonSound();
-        SceneManager.LoadScene(0); //go to the game menu
-
+        
         //add to the overall coins
         if (PlayerPrefs.GetFloat("Coins") < PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected)
         {
             PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + amountOfCoinsCollected);
         }
+
+        amountOfCoinsCollected = 0;
+        SceneManager.LoadScene(0); //go to the game menu
     }
     #endregion
 }

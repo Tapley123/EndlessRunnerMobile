@@ -281,6 +281,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e62519dfa3af642b3f1f8c9c5df057, type: 3}
+--- !u!4 &646181712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1871078296799183028, guid: e87f663eb38696a4b959d5e57549e455,
+    type: 3}
+  m_PrefabInstance: {fileID: 4925423827309488250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7221b3a501a8d248b0bf13268143d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerT: {fileID: 646181712}
   tileLength: 16.653
   safeZone: 15
   amountOfBlankTilesAtStart: 3
@@ -1100,6 +1107,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4925423827309488250}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1617283833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1617283833, guid: e87f663eb38696a4b959d5e57549e455,
+    type: 3}
+  m_PrefabInstance: {fileID: 4925423827309488250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617283831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1618068269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,6 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1617283831}
+  panelImage: {fileID: 1617283833}
   finalScoreText: {fileID: 1974790938}
   overallCoinsCollectedText: {fileID: 1053184538}
   amountOfCoinsCollected: 0
@@ -1356,6 +1376,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1906749462}
+    - target: {fileID: 1314877868, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2099333852}
     - target: {fileID: 2139378848, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1420,6 +1444,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2099333852}
+    - target: {fileID: 5781748571950981352, guid: e87f663eb38696a4b959d5e57549e455,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194225}
     - target: {fileID: 8091212309554063909, guid: e87f663eb38696a4b959d5e57549e455,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

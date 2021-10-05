@@ -291,7 +291,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-688446
+  m_Name: pb_Mesh-774654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -696,6 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7221b3a501a8d248b0bf13268143d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerT: {fileID: 1714128714}
   tileLength: 16
   safeZone: 15
   amountOfBlankTilesAtStart: 3
@@ -1004,7 +1005,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-688980
+  m_Name: pb_Mesh-775188
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1321,7 +1322,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-688764
+  m_Name: pb_Mesh-774972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1629,13 +1630,19 @@ PrefabInstance:
       objectReference: {fileID: 1720501068}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a1a633c4f01fcd44b6e7b6069c7900c, type: 3}
+--- !u!4 &1714128714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1871078296799183028, guid: e87f663eb38696a4b959d5e57549e455,
+    type: 3}
+  m_PrefabInstance: {fileID: 4925423827309488250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1720501068
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-689274
+  m_Name: pb_Mesh-775482
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1929,7 +1936,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-689562
+  m_Name: pb_Mesh-775770
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2192,6 +2199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1617283831}
+  panelImage: {fileID: 4925423827309488251}
   finalScoreText: {fileID: 1974790938}
   overallCoinsCollectedText: {fileID: 1053184538}
   amountOfCoinsCollected: 0
@@ -2216,6 +2224,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1906749462}
+    - target: {fileID: 1314877868, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2099333852}
     - target: {fileID: 2139378848, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2280,6 +2292,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2099333852}
+    - target: {fileID: 5781748571950981352, guid: e87f663eb38696a4b959d5e57549e455,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194225}
     - target: {fileID: 8091212309554063909, guid: e87f663eb38696a4b959d5e57549e455,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2292,6 +2309,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
+--- !u!114 &4925423827309488251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1617283833, guid: e87f663eb38696a4b959d5e57549e455,
+    type: 3}
+  m_PrefabInstance: {fileID: 4925423827309488250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617283831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6895698063573882631
 PrefabInstance:
   m_ObjectHideFlags: 0

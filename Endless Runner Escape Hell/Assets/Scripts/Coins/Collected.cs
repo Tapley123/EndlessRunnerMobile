@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//on the coin
 public class Collected : MonoBehaviour
 {
     
     //[SerializeField] private float dissapearForTime = 1f;
-    private MeshRenderer mr;
+    [SerializeField] private MeshRenderer mr;
 
     private void Start()
     {
-        mr = this.GetComponent<MeshRenderer>();
+        //mr = this.GetComponent<MeshRenderer>();
     }
 
     private IEnumerator Collect(float time)
