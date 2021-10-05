@@ -279,11 +279,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2 Left
       objectReference: {fileID: 0}
-    - target: {fileID: 7323362036519674955, guid: c1e62519dfa3af642b3f1f8c9c5df057,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e62519dfa3af642b3f1f8c9c5df057, type: 3}
 --- !u!1 &705507993
@@ -458,11 +453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 0 Blank
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414100382471529732, guid: 308e6042eadcbed4ca3aa54bcc4257e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7098151919517258947, guid: 308e6042eadcbed4ca3aa54bcc4257e3,
         type: 3}
@@ -892,11 +882,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3 Right
       objectReference: {fileID: 0}
-    - target: {fileID: 6501898824647464861, guid: 9a07402d1676c42438ac00729264dde9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a07402d1676c42438ac00729264dde9, type: 3}
 --- !u!1 &1415492712 stripped
@@ -985,11 +970,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 4 Roll
-      objectReference: {fileID: 0}
-    - target: {fileID: 2489660788744351430, guid: dd2d9bc291f41084abb3d2a5efeb6f9e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8029334218901004033, guid: dd2d9bc291f41084abb3d2a5efeb6f9e,
         type: 3}

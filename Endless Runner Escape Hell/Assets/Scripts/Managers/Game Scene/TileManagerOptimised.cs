@@ -64,12 +64,14 @@ public class TileManagerOptimised : MonoBehaviour
     private void ActivateTile()
     {
         GameObject go = TileObjectPooler.current.GetRandomTile();
-        Transform obstacle;
 
         go.SetActive(true);
         go.transform.position = Vector3.forward * spawnZ;
         spawnZ += tileLength;
 
+        /*
+        Transform obstacle; 
+         
         //find the obsitcal in the children of the tile if there is one
         for (int i = 0; i < go.transform.childCount; i++)
         {
@@ -81,24 +83,16 @@ public class TileManagerOptimised : MonoBehaviour
                 //Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true / false);
             }
         }
-        
+        */
+
+        go.GetComponent<Tile>().TurnObstacleOn();
 
         activeTiles.Add(go);
     }
 
     private void DeactivateTile()
     {
-        //renenable the mesh renderes on the disabled coins 
-        for (int i = 0; i < activeTiles[0].transform.childCount; i++)
-        {
-            if(activeTiles[0].transform.GetChild(i).gameObject.tag == "Coin")
-            {
-                //Debug.Log("Enabled a coin");
-                activeTiles[0].transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
-            }
-        }
-
-
+        activeTiles[0].GetComponent<Tile>().TurnCoinOn();
         activeTiles[0].SetActive(false);
         activeTiles.RemoveAt(0);
     }

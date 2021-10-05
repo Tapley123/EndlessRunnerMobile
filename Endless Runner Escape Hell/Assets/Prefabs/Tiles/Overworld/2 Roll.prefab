@@ -43,13 +43,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5840601349545317515}
+  - component: {fileID: 8888584886918802958}
   m_Layer: 0
   m_Name: 2 Roll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5840601349545317515
 Transform:
   m_ObjectHideFlags: 0
@@ -70,6 +71,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8888584886918802958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222702051920490892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a426d931541eb478cd3a25191325a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinMeshRenderer: {fileID: 4247221804771427589}
+  obstacleCollider: {fileID: 412691471685149162}
 --- !u!1 &3153481215866441956
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +872,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e23d6011a10781247b6a56a6cccd1a56, type: 3}
+--- !u!23 &4247221804771427589 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4247221805765493940, guid: e23d6011a10781247b6a56a6cccd1a56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1296286129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7793453235524649812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7793453236384629477, guid: e23d6011a10781247b6a56a6cccd1a56,
