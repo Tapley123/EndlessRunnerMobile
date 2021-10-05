@@ -168,7 +168,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 812598507}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &430225302
+--- !u!1 &455639011
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,8 +176,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 430225303}
-  - component: {fileID: 430225304}
+  - component: {fileID: 455639012}
+  - component: {fileID: 455639013}
   m_Layer: 0
   m_Name: Default Level Character
   m_TagString: Untagged
@@ -185,33 +185,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &430225303
+--- !u!4 &455639012
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430225302}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 455639011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1505918624}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &430225304
+--- !u!114 &455639013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430225302}
+  m_GameObject: {fileID: 455639011}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 671513654d6c8754197ca5761b38820c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultLevelCharacter: 0
+  defaultLevelCharacter: 2
 --- !u!1001 &521481341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 7323362036519674955, guid: c1e62519dfa3af642b3f1f8c9c5df057,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e62519dfa3af642b3f1f8c9c5df057, type: 3}
@@ -387,7 +387,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804239432}
-  - component: {fileID: 804239434}
   - component: {fileID: 804239433}
   m_Layer: 0
   m_Name: TileManager
@@ -419,34 +418,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 804239431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb717bae954b3441979fec54e38254b, type: 3}
+  m_Script: {fileID: 11500000, guid: 66efe7ba00d3b134a8be49743f31458d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesToPool:
-  - {fileID: 3414100382471529732, guid: 308e6042eadcbed4ca3aa54bcc4257e3, type: 3}
-  - {fileID: 5579915309007412845, guid: a87cc60bb258b24468f8c69a9b7c4c08, type: 3}
+  tiles:
   - {fileID: 7323362036519674955, guid: c1e62519dfa3af642b3f1f8c9c5df057, type: 3}
-  - {fileID: 6501898824647464861, guid: 9a07402d1676c42438ac00729264dde9, type: 3}
-  - {fileID: 2489660788744351430, guid: dd2d9bc291f41084abb3d2a5efeb6f9e, type: 3}
-  amountOfEachTileToSpawn: 2
-  pooledObjects: []
-  blankTiles: []
---- !u!114 &804239434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804239431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7221b3a501a8d248b0bf13268143d96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   tileLength: 16.653
-  safeZone: 15
+  safeZone: 10
   amountOfBlankTilesAtStart: 3
-  amountOfTilesOnScreen: 5
+  amountOfTilesOnScreen: 8
 --- !u!1001 &812598507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,7 +950,7 @@ Transform:
   - {fileID: 2099333851}
   - {fileID: 892155480}
   - {fileID: 1906749461}
-  - {fileID: 430225303}
+  - {fileID: 455639012}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1376,6 +1356,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1906749462}
+    - target: {fileID: 1617283831, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2139378848, guid: e87f663eb38696a4b959d5e57549e455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1433,11 +1417,6 @@ PrefabInstance:
     - target: {fileID: 1871078296799183028, guid: e87f663eb38696a4b959d5e57549e455,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5781748571950981352, guid: e87f663eb38696a4b959d5e57549e455,
-        type: 3}
-      propertyPath: character
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8477573420108028036, guid: e87f663eb38696a4b959d5e57549e455,

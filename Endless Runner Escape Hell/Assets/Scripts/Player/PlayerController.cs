@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    private enum enCharacter { zombie, pearl, japonese };
+    
     [SerializeField] private enCharacter character;
     [SerializeField] private List<GameObject> characters;
     private GameObject myCharacter;
@@ -172,6 +172,8 @@ public class PlayerController : MonoBehaviour
     #region Behaviors
     private void SpawnCharacter()
     {
+        character = DefaultLevelCharacter.Instance.defaultLevelCharacter;
+
         if (character == enCharacter.zombie)
         {
             myCharacter = Instantiate (characters[0]);

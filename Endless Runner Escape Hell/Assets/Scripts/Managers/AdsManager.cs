@@ -21,12 +21,16 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     [SerializeField] private bool useBannerAds = false;
     [SerializeField] private bool rewardDoubleCoins = true;
     [SerializeField] private bool rewardContinueRun = false;
+
+    private bool rewardGiven = false;
     #endregion
 
     private void Start()
     {
         Advertisement.Initialize(gameId);
         Advertisement.AddListener(this);
+
+        rewardGiven = false;
 
         if (useBannerAds)
             ShowBanner();
@@ -103,8 +107,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     #region Rewards
     void Reward_DoubleCoins()
     {
-        DeathMenu.Instance.amountOfCoinsCollected = DeathMenu.Instance.amountOfCoinsCollected * 2;
-        DeathMenu.Instance.CoinsCollected(DeathMenu.Instance.amountOfCoinsCollected);
+        DeathMenu.Instance.DoubleTheCollectedCoins();
     }
 
     void Reward_KeepRunning()
@@ -135,26 +138,39 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if(android)
         {
-            if (placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
+            if (placementId == "Rewarded_Android" && showResult == ShowResult.Finished && !rewardGiven)
             {
                 //Debug.Log("Reward Player Here");
                 if (rewardContinueRun)
+                {
                     Reward_KeepRunning();
+                }
 
                 if (rewardDoubleCoins)
+                {
                     Reward_DoubleCoins();
+                    Debug.Log("DOUBLED THE COINS!!");
+                }
+
+                rewardGiven = true;
             }
         }
         else //IOS
         {
-            if (placementId == "Rewarded_iOS" && showResult == ShowResult.Finished)
+            if (placementId == "Rewarded_iOS" && showResult == ShowResult.Finished && !rewardGiven)
             {
                 //Debug.Log("Reward Player Here");
                 if (rewardContinueRun)
+                {
                     Reward_KeepRunning();
+                }
 
                 if (rewardDoubleCoins)
+                {
                     Reward_DoubleCoins();
+                }
+
+                rewardGiven = true;
             }
         }
     }
