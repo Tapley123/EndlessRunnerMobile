@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Collected : MonoBehaviour
 {
-    [SerializeField] private float dissapearForTime = 1f;
+    
+    //[SerializeField] private float dissapearForTime = 1f;
     private MeshRenderer mr;
 
     private void Start()
@@ -25,7 +26,8 @@ public class Collected : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(Collect(dissapearForTime));
+            //StartCoroutine(Collect(dissapearForTime));
+            mr.enabled = false;
         }
     }
 }

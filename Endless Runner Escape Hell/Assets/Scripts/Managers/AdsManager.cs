@@ -150,7 +150,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
                 if (rewardDoubleCoins)
                 {
                     Reward_DoubleCoins();
-                    Debug.Log("DOUBLED THE COINS!!");
+                    //Debug.Log("DOUBLED THE COINS!!");
                 }
 
                 rewardGiven = true;

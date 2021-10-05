@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
     #region Behaviors
     private void SpawnCharacter()
     {
-        Debug.Log("Change here to not be given the default character in the level");
+        //Debug.Log("Change here to not be given the default character in the level");
         character = DefaultLevelCharacter.Instance.defaultLevelCharacter;
 
         if (character == enCharacter.zombie)

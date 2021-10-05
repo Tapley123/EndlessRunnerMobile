@@ -88,6 +88,17 @@ public class TileManagerOptimised : MonoBehaviour
 
     private void DeactivateTile()
     {
+        //renenable the mesh renderes on the disabled coins 
+        for (int i = 0; i < activeTiles[0].transform.childCount; i++)
+        {
+            if(activeTiles[0].transform.GetChild(i).gameObject.tag == "Coin")
+            {
+                //Debug.Log("Enabled a coin");
+                activeTiles[0].transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
+            }
+        }
+
+
         activeTiles[0].SetActive(false);
         activeTiles.RemoveAt(0);
     }
