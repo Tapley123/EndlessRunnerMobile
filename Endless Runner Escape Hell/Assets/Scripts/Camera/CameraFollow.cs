@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [Header ("Class Refs")]
-    private Transform lookAt;
+    [SerializeField] private Transform lookAt;
 
     [Header ("Vectors")]
     private Vector3 startOffset;
@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        lookAt = GameObject.FindGameObjectWithTag("Player").transform;
+        //lookAt = GameObject.FindGameObjectWithTag("Player").transform;
         startOffset = transform.position - lookAt.position;
     }
 

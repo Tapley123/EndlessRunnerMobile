@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [Header("Refs")]
-    private Animator animator;
-    private CharacterController controller;
-    private GameObject mainCamera;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private GameObject mainCamera;
 
     //general 
     private float sidwaysSpeed = 1.5f;
@@ -27,9 +27,9 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        animator = this.GetComponentInChildren<Animator>();
-        controller = this.GetComponent<CharacterController>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        //animator = this.GetComponentInChildren<Animator>();
+        //controller = this.GetComponent<CharacterController>();
+        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         startTime = Time.time;
     }

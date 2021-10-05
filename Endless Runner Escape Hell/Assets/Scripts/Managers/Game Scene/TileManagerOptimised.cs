@@ -69,23 +69,7 @@ public class TileManagerOptimised : MonoBehaviour
         go.transform.position = Vector3.forward * spawnZ;
         spawnZ += tileLength;
 
-        /*
-        Transform obstacle; 
-         
-        //find the obsitcal in the children of the tile if there is one
-        for (int i = 0; i < go.transform.childCount; i++)
-        {
-            if (go.transform.GetChild(i).gameObject.tag == "Obstacle")
-            {
-                obstacle = go.transform.GetChild(i);
-                obstacle.GetComponent<Collider>().enabled = true;
-                //Debug.Log(go.name + "'s child " + go.transform.GetChild(i).gameObject.name + " is an obstical");
-                //Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true / false);
-            }
-        }
-        */
-
-        go.GetComponent<Tile>().TurnObstacleOn();
+        //go.GetComponent<Tile>().TurnObstacleOn();
 
         activeTiles.Add(go);
     }

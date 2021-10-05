@@ -7,7 +7,7 @@ public class TileManager : MonoBehaviour
 {
     public List<GameObject> tiles;
     private List<GameObject> activeTiles;
-    private Transform playerT;
+    [SerializeField] private Transform playerT;
 
     private float spawnZ; //at what z position is the next tile going to spawned at
     [SerializeField] private float tileLength = 16.653f; // how far forward the next tile needs to be spawnd from the current one
@@ -21,7 +21,7 @@ public class TileManager : MonoBehaviour
         safeZone = tileLength + safeZone;
 
         activeTiles = new List<GameObject>();
-        playerT = GameObject.FindGameObjectWithTag("Player").transform;
+        //playerT = GameObject.FindGameObjectWithTag("Player").transform;
         spawnZ = -tileLength; //this will spawn a tile behind the player first
 
         //spawns the max amount of tiles at the begining of the game

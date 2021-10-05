@@ -29,7 +29,6 @@ public class Score : MonoBehaviour
 
     public float score;
     [SerializeField] private TMP_Text scoreText;
-    private DeathMenu deathMenu;
 
     //the higher the difficulty level you are on the more points you get per second
     private int difficultyLevel = 1;
@@ -41,8 +40,6 @@ public class Score : MonoBehaviour
     {
         if (scoreText == null)
             Debug.LogError("Assign the score text to the score script on the player");
-
-        deathMenu = GameObject.FindObjectOfType<DeathMenu>();
     }
 
     

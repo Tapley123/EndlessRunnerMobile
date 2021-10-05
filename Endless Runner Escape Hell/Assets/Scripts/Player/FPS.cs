@@ -5,12 +5,12 @@ using TMPro;
 
 public class FPS : MonoBehaviour
 {
-    private TMP_Text fpsText;
+    [SerializeField] private TMP_Text fpsText;
     private float deltaTime;
 
     private void Start()
     {
-        fpsText = this.GetComponent<TMP_Text>();
+        //fpsText = this.GetComponent<TMP_Text>();
     }
 
     void Update()

@@ -29,6 +29,7 @@ public class Collected : MonoBehaviour
         {
             //StartCoroutine(Collect(dissapearForTime));
             mr.enabled = false;
+            AudioManager.Instance.PlayCoinCollectSound();
         }
     }
 }
