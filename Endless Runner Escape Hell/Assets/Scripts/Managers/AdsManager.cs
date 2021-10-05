@@ -108,6 +108,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     void Reward_DoubleCoins()
     {
         DeathMenu.Instance.DoubleTheCollectedCoins();
+        GameObject.FindObjectOfType<PlayerUI>().DeactivateAdButtons();
     }
 
     void Reward_KeepRunning()
