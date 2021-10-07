@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    #region Check if Mobile
+#if UNITY_IOS || UNITY_ANDROID
+    private bool mobile = true;
+#else
+    private bool mobile = false;
+#endif
+    #endregion
+
     public GameObject adButtonPanel;
     public GameObject noAdButtonPanel;
 
@@ -21,13 +29,24 @@ public class PlayerUI : MonoBehaviour
 
     public void ActivateAdButtons()
     {
-        adButtonPanel.SetActive(true);
-        noAdButtonPanel.SetActive(false);
+        if(mobile)
+        {
+            adButtonPanel.SetActive(true);
+            noAdButtonPanel.SetActive(false);
+        }
+        else
+        {
+            noAdButtonPanel.SetActive(true);
+            adButtonPanel.SetActive(false);
+        }
     }
 
     public void DeactivateAdButtons()
     {
-        adButtonPanel.SetActive(false);
-        noAdButtonPanel.SetActive(true);
+        if(mobile)
+        {
+            adButtonPanel.SetActive(false);
+            noAdButtonPanel.SetActive(true);
+        }
     }
 }

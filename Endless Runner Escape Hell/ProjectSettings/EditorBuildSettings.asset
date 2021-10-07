@@ -18,9 +18,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/WebGL/0 WebGLMenu.unity
     guid: a1987a53f383024459eda2ee4964b3b9
   - enabled: 1
-    path: Assets/_Scenes/WebGL/1 WebGLHell.unity
-    guid: 6b37785f031b6404d9ca4c95188c4ffb
+    path: Assets/_Scenes/WebGL/1 WebGLHell 1.unity
+    guid: 6e203dce6550fe84a8a80b1b35913ef5
   - enabled: 1
     path: Assets/_Scenes/WebGL/2 WebGLOverworld.unity
-    guid: 158bc36c02b86924d801f522a87aae8c
+    guid: 6b37785f031b6404d9ca4c95188c4ffb
   m_configObjects: {}
