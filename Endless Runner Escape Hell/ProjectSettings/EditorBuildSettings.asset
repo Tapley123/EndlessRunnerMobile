@@ -14,13 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/2 Overworld.unity
     guid: 5ab81fd4f3d1e314e81f5ea9bc0a0a59
-  - enabled: 0
-    path: Assets/_Scenes/Not Using/OldLevels/OldHell.unity
-    guid: b1ccb329c8fadeb479459155c28422d6
-  - enabled: 0
-    path: Assets/_Scenes/Not Using/OldLevels/OldOverworld.unity
-    guid: 3c39e2de27b3e834eb88dcd3a803175e
-  - enabled: 0
-    path: Assets/_Scenes/Not Using/Game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
