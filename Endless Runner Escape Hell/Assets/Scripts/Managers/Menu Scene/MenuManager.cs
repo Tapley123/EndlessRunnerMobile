@@ -22,11 +22,6 @@ public class MenuManager : MonoBehaviour
             return _instance;
         }
     }
-
-    void Awake()
-    {
-        //DontDestroyOnLoad(gameObject);
-    }
     #endregion
 
     [Header("Audio")]
@@ -43,14 +38,24 @@ public class MenuManager : MonoBehaviour
     public TMP_Text coinText;
     private int amountOfCoins;
 
+    [Header("Panels")]
+    public List<GameObject> Panels;
+
+    void Awake()
+    {
+        Button_ToMainPanel();
+    }
+
     private void Start()
     {
         highScore = (int)PlayerPrefs.GetFloat("Highscore");
         highScoreText.text = "Highscore: " + highScore.ToString();
 
-        amountOfCoins = (int)PlayerPrefs.GetFloat("Coins");
-        coinText.text = amountOfCoins.ToString();
+        //amountOfCoins = (int)PlayerPrefs.GetFloat("Coins");
+        //coinText.text = amountOfCoins.ToString();
     }
+
+    
 
     #region Audio
     private void PlayButtonClickSound()
@@ -81,7 +86,28 @@ public class MenuManager : MonoBehaviour
     }
 
 
+    public void Button_ToMainPanel()
+    {
+        Panels[0].SetActive(true);
 
+        for (int i = 1; i < Panels.Count; i++)
+        {
+            Panels[i].SetActive(false);
+        }
+    }
+
+    public void Button_ToShopPanel()
+    {
+        //shop panel index = 1
+
+        for (int i = 0; i < Panels.Count; i++)
+        {
+            if (i != 1)
+                Panels[i].SetActive(false);
+            else
+                Panels[i].SetActive(true);
+        }
+    }
 
 
     public void Button_Quit()
