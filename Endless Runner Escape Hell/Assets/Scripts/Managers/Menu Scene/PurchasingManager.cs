@@ -5,16 +5,48 @@ using TMPro;
 
 public class PurchasingManager : MonoBehaviour
 {
+    #region singleton
+    private static PurchasingManager _instance;
+
+    public static PurchasingManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<PurchasingManager>();
+            }
+
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+    }
+    #endregion
+
     private int coins;
     //public enCharacter skins;
 
     [Header("Prices")]
     [SerializeField] private int pearlPrice;
     [SerializeField] private TMP_Text pearlPriceText;
-    [SerializeField] private int zombiePrice;
-    [SerializeField] private TMP_Text zombiePriceText;
-    [SerializeField] private int japonesePrice;
-    [SerializeField] private TMP_Text japonesePriceText;
+    [SerializeField] private int patientZeroPrice;
+    [SerializeField] private TMP_Text patientZeroPriceText;
+    [SerializeField] private int theEmpressPrice;
+    [SerializeField] private TMP_Text theEmpressPriceText;
+
+    [Header("Buttons")]
+    [SerializeField] private GameObject pearlButton;
+    [SerializeField] private GameObject patientZeroButton;
+    [SerializeField] private GameObject theEmpressButton;
+
+    [Header("Bools")]
+    public bool ownPearl = false;
+    public bool ownPatientZero = false;
+    public bool ownTheEmpress = false;
 
     [Header("Dev Stuff")]
     [SerializeField] private TMP_InputField amountOfMoneyToCheatIn;
@@ -22,8 +54,10 @@ public class PurchasingManager : MonoBehaviour
     void Start()
     {
         pearlPrice = int.Parse(pearlPriceText.text); //makes the price of pearl = to the amount the text displays
-        zombiePrice = int.Parse(zombiePriceText.text); //makes the price of zombie = to the amount the text displays
-        japonesePrice = int.Parse(japonesePriceText.text); //makes the price of japonese = to the amount the text displays
+        patientZeroPrice = int.Parse(patientZeroPriceText.text); //makes the price of zombie = to the amount the text displays
+        theEmpressPrice = int.Parse(theEmpressPriceText.text); //makes the price of japonese = to the amount the text displays
+
+        DisplayTheBoughtIcons();
     }
 
     
@@ -51,41 +85,88 @@ public class PurchasingManager : MonoBehaviour
     #region Buying Buttons
     public void Buy_Skin_Pearl()
     {
+        //buy pearl
         if(coins >= pearlPrice)
         {
             Debug.Log("You Baught Pearl");
             PlayerPrefs.SetFloat("Coins", coins - pearlPrice);
+            ownPearl = true;
+
+            pearlButton.GetComponent<BuySkin>().BuyThisSkin();
         }
-        else
+        else //cant afford pearl
         {
             Debug.Log("You Cant Afford Pearl");
         }
     }
 
-    public void Buy_Skin_Zombie()
+    public void Buy_Skin_PatientZero()
     {
-        if (coins >= zombiePrice)
+        //buy patient zero
+        if (coins >= patientZeroPrice)
         {
-            Debug.Log("You Baught zombie");
-            PlayerPrefs.SetFloat("Coins", coins - zombiePrice);
+            Debug.Log("You Baught PatientZero");
+            PlayerPrefs.SetFloat("Coins", coins - patientZeroPrice);
+            ownPatientZero = true;
+
+            patientZeroButton.GetComponent<BuySkin>().BuyThisSkin();
         }
-        else
+        else //cant afford patient zero
         {
-            Debug.Log("You Cant Afford zombie");
+            Debug.Log("You Cant Afford PatientZero");
         }
     }
 
-    public void Buy_Skin_Japonese()
+    public void Buy_Skin_TheEmpress()
     {
-        if (coins >= japonesePrice)
+        //buy The Empress
+        if (coins >= theEmpressPrice)
         {
-            Debug.Log("You Baught japonese");
-            PlayerPrefs.SetFloat("Coins", coins - japonesePrice);
+            Debug.Log("You Baught The Empress");
+            PlayerPrefs.SetFloat("Coins", coins - theEmpressPrice);
+            ownTheEmpress = true;
+
+            theEmpressButton.GetComponent<BuySkin>().BuyThisSkin();
         }
-        else
+        else //cant afford The Empress
         {
-            Debug.Log("You Cant Afford japonese");
+            Debug.Log("You Cant Afford The Empress");
         }
     }
     #endregion
+
+    void DisplayTheBoughtIcons()
+    {
+        //Pearl
+        if(ownPearl)
+        {
+            pearlButton.GetComponent<BuySkin>().BoughtImage.SetActive(true);
+        }
+        else
+        {
+            pearlButton.GetComponent<BuySkin>().BoughtImage.SetActive(false);
+        }
+
+
+        //Patient Zero
+        if (ownPatientZero)
+        {
+            patientZeroButton.GetComponent<BuySkin>().BoughtImage.SetActive(true);
+        }
+        else
+        {
+            patientZeroButton.GetComponent<BuySkin>().BoughtImage.SetActive(false);
+        }
+
+
+        //The Empress
+        if (ownTheEmpress)
+        {
+            theEmpressButton.GetComponent<BuySkin>().BoughtImage.SetActive(true);
+        }
+        else
+        {
+            theEmpressButton.GetComponent<BuySkin>().BoughtImage.SetActive(false);
+        }
+    }
 }
