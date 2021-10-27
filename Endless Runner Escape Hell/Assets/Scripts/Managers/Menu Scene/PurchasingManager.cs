@@ -57,7 +57,7 @@ public class PurchasingManager : MonoBehaviour
         patientZeroPrice = int.Parse(patientZeroPriceText.text); //makes the price of zombie = to the amount the text displays
         theEmpressPrice = int.Parse(theEmpressPriceText.text); //makes the price of japonese = to the amount the text displays
 
-        DisplayTheBoughtIcons();
+        DisplayTheBoughtIcons(); 
     }
 
     
