@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
         this.GetComponent<Score>().OnDeath();
         this.GetComponent<CollectCoins>().OnDeath();
-        this.GetComponent<PlayerUI>().ActivateAdButtons();
+        //this.GetComponent<PlayerUI>().ActivateAdButtons();
     }
 
     void RollingBehaviors()

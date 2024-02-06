@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 
-public class AdsManager : MonoBehaviour, IUnityAdsListener
+public class AdsManager : MonoBehaviour//, IUnityAdsListener
 {
+    /*
     #region get IOS/ANDROID
 #if UNITY_IOS
     private string gameId = "4391038"; //IOS Game ID
@@ -176,4 +177,5 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         }
     }
     #endregion
+    */
 }
